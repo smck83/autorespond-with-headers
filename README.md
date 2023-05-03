@@ -10,7 +10,6 @@
 | IMAP_SERVER | `(REQUIRED)`The IP or hostname of the IMAP server  |
 | IMAP_USERNAME | `(REQUIRED)`The username the authentication with your IMAP server  |
 | IMAP_PASSWORD | `(REQUIRED)`The password the authentication with your IMAP server  |
-| ALLOWED_SENDERS | `(REQUIRED)` Space seperated e-mail addresses or domain names, `e.g. bgates@contoso.com gmail.com`  |
 | SCHEDULE | `(OPTIONAL)` The time (in seconds) between checking the e-mail account `Default: 30`  |
 | SMTP_SERVER | `(OPTIONAL)` The IP or hostname of the SMTP server `Default: IMAP_SERVER` |
 | SMTP_USERNAME | `(OPTIONAL)` The username the authentication with your IMAP server `Default: IMAP_USERNAME` |
