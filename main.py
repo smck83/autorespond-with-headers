@@ -39,9 +39,8 @@ if 'SCHEDULE' in os.environ:
 else:
     recheckEveryXSeconds = 30
 
-def sendEmail(receivers,subject,result):
+def sendEmail(receivers,subject,emailbody):
     msg = EmailMessage()
-    emailbody = "Please see your headers below:\r\n\r\n" + result
     msg['Subject'] = f"RE: {subject} | ({receivers})"
     msg['From'] = SMTPsender
     msg['To'] = [receivers]
@@ -88,7 +87,6 @@ def connect(server, user, password):
 def get_email_headers(con,emailid):
     resp, data = con.fetch(emailid, "(BODY.PEEK[HEADER])")
     email_body = data[0][1]
-    #mail = data[0][1]
     mail = mailparser.parse_from_bytes(email_body)
     return mail
 
@@ -108,7 +106,8 @@ def autorespond_to_unread_email(imapserver:str=IMAPserver,username:str=IMAPuser,
             print(datetime.datetime.now(),"Starting to process e-mails")
             con.store(emailid, '+FLAGS', '(\\Seen)')  # Mark e-mail as read so it won't be picked up next time
             emailResults = get_email_headers(con, emailid)
-            sendEmail(emailResults._from[0][1],emailResults.subject,str(emailResults.message_as_string))
+            messageBody = emailResults.ARC_Authentication_Results + "\r\n\r\n" + "Please see your headers below:\r\n\r\n" + str(emailResults.message_as_string)
+            sendEmail(emailResults._from[0][1],emailResults.subject,messageBody)
 
         
     #con.close
