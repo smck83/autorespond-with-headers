@@ -106,6 +106,7 @@ def autorespond_to_unread_email(imapserver:str=IMAPserver,username:str=IMAPuser,
             print(datetime.datetime.now(),"Starting to process e-mails")
             con.store(emailid, '+FLAGS', '(\\Seen)')  # Mark e-mail as read so it won't be picked up next time
             emailResults = get_email_headers(con, emailid)
+            con.logout
             messageBody = emailResults.ARC_Authentication_Results + "\r\n\r\n" + "Please see your headers below:\r\n\r\n" + str(emailResults.message_as_string)
             sendEmail(emailResults._from[0][1],emailResults.subject,messageBody)
 
