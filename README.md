@@ -14,8 +14,8 @@ Use case: Someone troubleshooting e-mail flow is able to determine if there are 
 | IMAP_PASSWORD | `(REQUIRED)` The IMAP password used to authenticate  |
 | SCHEDULE | `(OPTIONAL)` The time (in seconds) between checking the e-mail account `Default: 30`  |
 | SMTP_SERVER | `(OPTIONAL)` The IP or hostname of the SMTP server `Default: IMAP_SERVER` |
-| SMTP_USERNAME | `(OPTIONAL)` The username the authentication with your SMTP username `Default: IMAP_USERNAME` |
-| SMTP_PASSWORD | `(OPTIONAL)` The password the authentication with your SMTP password `Default: IMAP_PASSWORD` |
+| SMTP_USERNAME | `(OPTIONAL)` Your SMTP server Username, if different from IMAP `Default: IMAP_USERNAME` |
+| SMTP_PASSWORD | `(OPTIONAL)` Your SMTP server Password, if different from IMAP `Default: IMAP_PASSWORD` |
 | SMTP_SENDER | `(OPTIONAL)` The Display name and from e-mail address to be used in the response `Default: Autoresponse <SMTP_USERNAME>` |
 
 
